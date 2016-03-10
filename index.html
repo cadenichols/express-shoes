@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Testing</title>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.min.js"></script>
+  <script src="main.js"></script>
+</head>
+<body ng-app='testApp' ng-controller='testCtrl'>
+  <h1>Testing!</h1>
+
+  <label>Search Filter:</label>
+  <input type="text" ng-model='searchFilter'>
+
+  <table>
+    <thead>
+      <tr>
+        <th ng-click='changeOrder("brand")'>Brand</th>
+        <th ng-click='changeOrder("size")'>Size</th>
+        <th ng-click='changeOrder("type")'>Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat='shoe in shoes 
+                        | filter : searchFilter
+                        | orderBy : sortOrder'>
+
+        <td>{{shoe.brand}}</td>
+        <td>{{shoe.size}}</td>
+        <td>{{shoe.type}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+
+</body>
+</html>
